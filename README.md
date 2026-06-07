@@ -1,14 +1,20 @@
 # PV Reprogramming Model
 
-Reusable research code for Transformer-based modelling of human glia-to-PV interneuron reprogramming.
+Reusable research code for the Transformer-based framework developed in the thesis
+*Transformer-Based Regulatory Candidate Profiling for Parvalbumin-Associated
+Interneuron Reprogramming*.
 
-This repository contains the migrated, reusable implementation of the three original demo notebook models:
+This repository implements the thesis workflow for prioritising regulatory candidates in
+human glia-to-PV-associated interneuron reprogramming. The codebase consolidates the
+former exploratory notebook models into reusable package modules, YAML configs,
+pretrained checkpoints, analysis utilities, and a single command-line training entry point.
 
-- Binary fate classifier from `demo/classifier.ipynb`
-- Multi-class cluster classifier from `demo/classifier_multi.ipynb`
-- Trajectory forecasting generator from `demo/generator_3.ipynb`
+The main reusable components are:
 
-The model architectures, training configurations, dataset path, and pretrained checkpoints have been consolidated into package modules, YAML configs, and a single command-line training entry point.
+- A binary Transformer fate classifier for distinguishing PV-associated and non-PV-associated cell states.
+- An auxiliary seven-class Transformer state classifier for cluster-level identity readouts in perturbation analysis.
+- A latent-time trajectory forecasting Transformer that predicts downstream expression states along the PV-associated branch.
+- Attribution, candidate-panel, in silico perturbation, sustained rollout, benchmarking, and ablation utilities used to connect model readouts with regulatory hypotheses.
 
 ## Environment
 
