@@ -1,0 +1,21 @@
+{
+  "heldout_mse": 0.18998514115810394,
+  "global_corr_nonzero": 0.5210666060447693,
+  "meta_cell_corr_by_time_bin": 0.7646500468254089,
+  "pred_sparsity": 0.8431308981413606,
+  "sparsity_gap": 0.04750526599051652,
+  "true_sparsity": 0.8906361641318771,
+  "n_meta_bins": 119,
+  "asw_cell_type_separation": 0.7080371528863907,
+  "asw_raw": 0.41607430577278137,
+  "ari": 0.7665521913243196,
+  "nmi": 0.8411062102388522,
+  "eval_n": 808,
+  "variant": "full_model",
+  "label": "Full model",
+  "seed": 66,
+  "gpu_id": 0,
+  "best_epoch": 68,
+  "best_val_loss": 0.9695098935593613,
+  "checkpoint": "checkpoints/forecasting_ablation/full_model/seed_66/best_by_val_loss.pth"
+}

@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Large data files
+data/*.h5ad
+data/*.h5
+data/*.loom
+data/*.mtx
+data/*.npz
+data/*.npy
+
+# Model checkpoints and large generated artifacts
+checkpoints/**/*.pth
+checkpoints/**/*.pt
+checkpoints/**/*.ckpt
+checkpoints/**/*.pkl
+checkpoints/**/logs/
+checkpoints/**/worker_outputs/
+
+# Keep lightweight metadata/results trackable by default.
+!checkpoints/**/*.csv
+!checkpoints/**/*.json
+!checkpoints/**/README.md
+
+# Local outputs
+outputs/
+results/
+figures/generated/
+runs/
+wandb/
+artifacts/
+reproducibility/figures/
+
+# Thesis PDF and other large binaries
+Xing_thesis_2.pdf
+

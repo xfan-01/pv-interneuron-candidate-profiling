@@ -1,0 +1,45 @@
+figures:
+  - confusion_matrix
+  - gene_impact_bar
+  - ig_bubble
+  - attention_heatmap
+  - ig_flip_bar
+  - low_recall_rows
+  - uncertainty_diagnostics
+  - forecast_scatter
+  - zscore_ranking
+  - selection_frequency
+  - trajectory_profiles
+  - umap_overlay
+  - deg_delta_scatter
+  - main_metric_heatmap
+  - bootstrap_ci_forest
+  - seed_rank_correlation
+  - topk_overlap
+  - benchmark1_source_dependence_metrics
+  - benchmark1_same_target_bin_vectors
+  - benchmark3_response_mode_robustness
+
+input_overrides:
+  labelled_data.h5ad: data/labelled_data.h5ad
+  source_dependence_metrics.csv: artifacts/benchmarks/source_dependence_metrics.csv
+  same_target_bin_source_state_vectors.csv: artifacts/benchmarks/same_target_bin_source_state_vectors.csv
+
+figure_params:
+  confusion_matrix:
+    title: Binary Classifier Confusion Matrix
+  ig_bubble:
+    top_k: 12
+  attention_heatmap:
+    top_k: 15
+  selection_frequency:
+    threshold: 0.8
+  trajectory_profiles:
+    pseudotime_col: latent_time
+    value_col: trajectory_score
+  umap_overlay:
+    color_col: predicted_class
+  deg_delta_scatter:
+    x_col: delta_npv
+    y_col: delta_pv
+    gene_col: gene

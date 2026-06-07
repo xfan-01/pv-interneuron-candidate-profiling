@@ -1,0 +1,14 @@
+torch
+numpy
+scipy
+pandas
+scanpy
+anndata
+scikit-learn
+matplotlib
+seaborn
+tqdm
+pyyaml
+jupyter
+ipykernel
+

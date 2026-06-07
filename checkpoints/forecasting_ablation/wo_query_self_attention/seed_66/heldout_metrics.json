@@ -1,0 +1,21 @@
+{
+  "heldout_mse": 0.18736988306045532,
+  "global_corr_nonzero": 0.5241536498069763,
+  "meta_cell_corr_by_time_bin": 0.7615985870361328,
+  "pred_sparsity": 0.6691009307116279,
+  "sparsity_gap": 0.22153523342024917,
+  "true_sparsity": 0.8906361641318771,
+  "n_meta_bins": 119,
+  "asw_cell_type_separation": 0.7492414563894272,
+  "asw_raw": 0.49848291277885437,
+  "ari": 0.9626388732929483,
+  "nmi": 0.957796088602762,
+  "eval_n": 808,
+  "variant": "wo_query_self_attention",
+  "label": "w/o query self-attention",
+  "seed": 66,
+  "gpu_id": 0,
+  "best_epoch": 42,
+  "best_val_loss": 0.9849636066706534,
+  "checkpoint": "checkpoints/forecasting_ablation/wo_query_self_attention/seed_66/best_by_val_loss.pth"
+}

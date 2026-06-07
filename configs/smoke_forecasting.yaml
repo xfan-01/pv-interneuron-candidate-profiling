@@ -1,0 +1,65 @@
+data:
+  allowed_cross_steps:
+  - 1
+  - 2
+  allowed_offsets:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  base_max_dist: 12.0
+  cluster_col: leiden_0.2_c6
+  dist_alpha: 1.0
+  h5ad_path: data/labelled_data.h5ad
+  heldout_split: 0.1
+  k_cross: 2
+  k_intra: 1
+  n_bins: 120
+  subset_col: trajectory_class
+  subset_values:
+  - PV
+  time_col: refined_pseudotime
+  val_split: 0.2
+hot_start:
+  enabled: true
+  epochs_per_run: 2
+  eta_min: 1.0e-05
+  n_runs: 1
+  resume_from_best_each_run: true
+  start_lr: 0.0001
+loss:
+  lambda_nz: 1.0
+  lambda_nzcos: 0.5
+  lambda_z_l1: 1.0
+  lambda_z_l2: 1.0
+  min_genes_for_cos: 5
+model:
+  d_model: 256
+  dropout: 0.1
+  max_len: 1000
+  n_encoder_layers: 4
+  n_genes: 2134
+  n_heads: 4
+  n_query_cross_layers: 1
+  n_query_self_layers: 2
+seed: 42
+training:
+  accumulation_steps: 1
+  base_mask_prob: 0.3
+  batch_size: 16
+  checkpoint_path: checkpoints/forecasting/smoke_test_gen.pth
+  epochs: 2
+  hot_mask_prob: 0.0
+  learning_rate: 0.0001
+  mask_prob: 0.3
+  parallel: false
+  reconstruct_self_mask_prob_nz: 0.3
+  reconstruct_self_mask_prob_z: 0.05
+  time_jitter_std: 0.005
+  use_accumulation: false
+  warmup_epochs_ratio: 0.5
+  weight_decay: 0.01
+
+

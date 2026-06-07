@@ -1,0 +1,204 @@
+# ============================================================================
+#  Thesis-wide biological & experimental constants
+# ============================================================================
+#  This file is the **single source of truth** for cluster labels, trajectory
+#  definitions, marker gene sets, column-name conventions, and perturbation
+#  readout metrics used across the entire thesis analysis.
+#
+#  All ``model/`` modules and ``scripts/`` should resolve these values via
+#  ``model.utils.constants`` instead of using module-level defaults.
+#
+#  When a notebook hardcodes a value that also appears here, the notebook
+#  hardcode is considered a local cache — the authoritative value lives here.
+# ============================================================================
+
+# ---------------------------------------------------------------------------
+#  Cluster / trajectory label system
+# ---------------------------------------------------------------------------
+cluster:
+  # Default column name in adata.obs holding cluster labels
+  column: "leiden_0.2_c6"
+
+  # Label normalisation rules (applied by prepare_clusters)
+  normalize:
+    "6,0": "6.0"       # comma → dot
+
+  # Canonical order for display (left→right, bottom→top)
+  labels:
+    - "2"
+    - "5"
+    - "7"
+    - "7.1"
+    - "16.1"
+    - "6.0"
+    - "15"
+
+  # PV-path trajectory progression order (source → … → terminal)
+  pv_path:
+    - "7"
+    - "7.1"
+    - "16.1"
+    - "6.0"
+    - "15"
+
+  # Cluster assignment to fate branches
+  npv_clusters:
+    - "5"
+    - "2"
+  pv_clusters:
+    - "7"
+    - "7.1"
+    - "16.1"
+    - "6.0"
+    - "15"
+
+# ---------------------------------------------------------------------------
+#  Class-label definitions
+# ---------------------------------------------------------------------------
+class_labels:
+  # Cell type excluded from binary classification
+  exclude: "hGPC"
+
+  # Binary classifier label → integer mapping
+  binary:
+    NPV: 0
+    PV: 1
+
+  # Multi-class display order (must match cluster.labels)
+  multi_order:
+    - "2"
+    - "5"
+    - "7"
+    - "7.1"
+    - "16.1"
+    - "6.0"
+    - "15"
+
+  # Generator trajectory-variant → integer mapping
+  branch_map:
+    hGPC: 0
+    PV: 1
+    NPV: 2
+
+# ---------------------------------------------------------------------------
+#  Time / pseudotime conventions
+# ---------------------------------------------------------------------------
+time:
+  # Primary pseudotime column (in adata.obs)
+  primary_column: "refined_pseudotime"
+
+  # Fallback columns searched in order when primary is missing
+  fallback_columns:
+    - "norm_time"
+    - "latent_time"
+
+  # Number of time bins for trajectory discretisation
+  n_bins: 120
+
+# ---------------------------------------------------------------------------
+#  Marker gene sets (thesis biological hypotheses)
+# ---------------------------------------------------------------------------
+markers:
+  # PV-terminal identity markers used for perturbation readouts
+  pv_identity:
+    - "PVALB"
+    - "FGF13"
+    - "LHX6"
+    - "GAD1"
+    - "SYN3"
+    - "CACNA1A"
+    - "NLGN1"
+
+  # Top TF→marker pairs (from generator_analysis_3 cell 19)
+  tf_marker_pairs_top1:
+    - ["RFX4", "PVALB"]
+    - ["SOX6", "FGF13"]
+    - ["RFX4", "LHX6"]
+    - ["SOX6", "GAD1"]
+    - ["SOX6", "SYN3"]
+    - ["NPAS3", "CACNA1A"]
+    - ["ARID5B", "NLGN1"]
+
+  # Control TF→marker pairs for comparison
+  tf_marker_pairs_control:
+    - ["SOX6", "PVALB"]
+    - ["ARID5B", "FGF13"]
+    - ["SOX6", "LHX6"]
+    - ["SOX2", "GAD1"]
+    - ["MEIS2", "SYN3"]
+    - ["SOX2", "CACNA1A"]
+    - ["SOX2", "NLGN1"]
+
+# ---------------------------------------------------------------------------
+#  Perturbation readout configuration
+# ---------------------------------------------------------------------------
+perturbation:
+  # Readout metrics with sign orientation (+1 = higher-is-better, −1 = lower-is-better)
+  readout_orientation:
+    delta_path_progress: 1.0
+    delta_path_deviation: -1.0     # lower deviation = higher path fidelity
+    delta_path_index_expectation: 1.0
+    delta_logit_cluster15: 1.0
+
+  readout_labels:
+    delta_path_progress: "Path progress"
+    delta_path_deviation: "Path fidelity (-deviation)"
+    delta_path_index_expectation: "Path-index expectation"
+    delta_logit_cluster15: "Terminal cluster-15 identity"
+
+  # Primary metrics used for hit-calling / candidate panel
+  main_geometry_metrics:
+    - "delta_path_progress"
+    - "delta_path_deviation"
+  main_identity_metrics:
+    - "delta_path_index_expectation"
+    - "delta_logit_cluster15"
+
+  # Supporting diagnostic metrics (secondary readouts)
+  diagnostic_metrics:
+    - "delta_pseudotime"
+    - "delta_target_distance"
+    - "delta_logit_next_cluster"
+    - "delta_forward_margin"
+    - "delta_path_neighbour_fraction"
+    - "delta_joint_fate"
+
+  # Legacy metric aliases → canonical names
+  legacy_to_canonical:
+    delta_path_distance: "delta_path_deviation"
+
+  # Rollout-specific metric subsets
+  rollout_primary: []
+  rollout_supporting:
+    - "delta_forward_margin"
+    - "delta_pseudotime"
+    - "delta_target_distance"
+
+# ---------------------------------------------------------------------------
+#  Highlight gene / candidate sets (thesis storytelling)
+# ---------------------------------------------------------------------------
+highlights:
+  # Focus candidates for robustness / benchmark figures
+  focus_candidates:
+    - "MYT1L_OE"
+    - "ZEB2_OE"
+    - "SOX6_OE"
+    - "PBX3_OE"
+
+  # Spotlight TFs shown in UMAP / summary figures
+  spotlight_tfs:
+    - "ARID5B"
+    - "MEIS2"
+    - "ZEB1"
+    - "NPAS3"
+    - "ZEB2"
+    - "SOX6"
+    - "PBX3"
+    - "CREB5"
+    - "MYT1L"
+    - "ST18"
+
+  # Classes with lowest recall (for diagnostic spotlight)
+  low_recall_spotlight_classes:
+    - "7.1"
+    - "16.1"

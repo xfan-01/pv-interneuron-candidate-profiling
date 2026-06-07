@@ -1,0 +1,60 @@
+seed: 42
+data:
+  h5ad_path: data/labelled_data.h5ad
+  subset_col: trajectory_class
+  subset_values: [PV]
+  time_col: refined_pseudotime
+  cluster_col: leiden_0.2_c6
+  n_bins: 120
+  allowed_offsets: [1, 2, 3, 4, 5, 6]
+  base_max_dist: 12.0
+  dist_alpha: 1.0
+  allowed_cross_steps: [1, 2]
+  k_intra: 1
+  k_cross: 2
+  val_split: 0.2
+  heldout_split: 0.1
+model:
+  n_genes: 2134
+  max_len: 1000
+  d_model: 256
+  n_heads: 4
+  n_encoder_layers: 4
+  n_query_self_layers: 2
+  n_query_cross_layers: 1
+  dropout: 0.1
+training:
+  batch_size: 128
+  epochs: 300
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  warmup_epochs_ratio: 0.2
+  mask_prob: 0.30
+  base_mask_prob: 0.30
+  hot_mask_prob: 0.00
+  reconstruct_self_mask_prob_nz: 0.30
+  reconstruct_self_mask_prob_z: 0.05
+  time_jitter_std: 0.005
+  use_accumulation: false
+  accumulation_steps: 1
+  parallel: false
+  base_checkpoint_path: checkpoints/forecasting/best_forecaster.pth
+  hot_checkpoint_path: checkpoints/forecasting/best_forecaster_hot.pth
+  checkpoint_path: checkpoints/forecasting/best_forecaster_hot.pth
+loss:
+  lambda_nz: 1.0
+  lambda_z_l1: 1.0
+  lambda_z_l2: 1.0
+  lambda_nzcos: 0.5
+  min_genes_for_cos: 5
+hot_start:
+  enabled: true
+  n_runs: 1
+  epochs_per_run: 100
+  start_lr: 0.0001
+  eta_min: 0.00001
+  resume_from_best_each_run: true
+
+
+
+

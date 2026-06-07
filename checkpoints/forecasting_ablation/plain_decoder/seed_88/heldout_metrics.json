@@ -1,0 +1,21 @@
+{
+  "heldout_mse": 0.22647978365421295,
+  "global_corr_nonzero": 0.5341100096702576,
+  "meta_cell_corr_by_time_bin": 0.779906153678894,
+  "pred_sparsity": 0.30360871138660256,
+  "sparsity_gap": 0.5870274527452746,
+  "true_sparsity": 0.8906361641318771,
+  "n_meta_bins": 119,
+  "asw_cell_type_separation": 0.7340236008167267,
+  "asw_raw": 0.46804720163345337,
+  "ari": 0.9675503143947419,
+  "nmi": 0.9651313898295615,
+  "eval_n": 808,
+  "variant": "plain_decoder",
+  "label": "Plain decoder",
+  "seed": 88,
+  "gpu_id": 0,
+  "best_epoch": 54,
+  "best_val_loss": 0.9629128041330683,
+  "checkpoint": "checkpoints/forecasting_ablation/plain_decoder/seed_88/best_by_val_loss.pth"
+}
