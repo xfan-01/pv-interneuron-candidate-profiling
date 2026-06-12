@@ -7,7 +7,10 @@ Interneuron Reprogramming*.
 This repository implements the thesis workflow for prioritising regulatory candidates in
 human glia-to-PV-associated interneuron reprogramming. The codebase consolidates the
 former exploratory notebook models into reusable package modules, YAML configs,
-pretrained checkpoints, analysis utilities, and a single command-line training entry point.
+analysis utilities, lightweight experiment summaries, and a single command-line
+training entry point. Large data files and trained checkpoint weights are kept out
+of the repository to stay within GitHub size limits and to keep the source release
+portable.
 
 The main reusable components are:
 
@@ -32,13 +35,22 @@ pip install -r requirements.txt
 
 ## Reproducibility Assets
 
-The reproducible dataset asset used by both configs and demo notebooks is:
+The reproducible dataset asset expected by both configs and demo notebooks is:
 
 ```text
 data/labelled_data.h5ad
 ```
 
-Included checkpoints:
+This file is not included in the GitHub repository. Place the local dataset at the
+path above before running training or notebook workflows. The repository only keeps
+small reference assets, such as:
+
+```text
+data/Homo_sapiens_TF.html
+```
+
+Trained checkpoint weights are also excluded from version control. The configs
+expect or create local checkpoint files such as:
 
 ```text
 checkpoints/classifier/best_classifier.pth
@@ -48,6 +60,13 @@ checkpoints/forecasting/best_forecaster_hot.pth
 ```
 
 Random seeds are configured in YAML files and applied through `model.utils.reproducibility.seed_everything`.
+
+Tracked checkpoint outputs are limited to lightweight analysis artifacts, including
+ablation `.csv` summaries and `.json` metric files under:
+
+```text
+checkpoints/forecasting_ablation/
+```
 
 ## Model Coverage
 
@@ -216,5 +235,5 @@ Access them through `model.utils.constants`.
 
 - `Forecaster*` is the primary API name for the migrated generator model.
 - `Generator*` aliases remain available for backward compatibility.
-- `data/` and `checkpoints/` are intentionally kept for local reproduction.
+- Large files in `data/` and checkpoint weights in `checkpoints/` are intentionally excluded from Git. Keep them locally for reproduction.
 - This release does not currently include a separate `tests/` directory.
