@@ -1,8 +1,0 @@
-cff-version: 1.2.0
-message: "If you use this code, please cite this repository."
-title: "PV Interneuron Candidate Profiling"
-authors:
-  - family-names: "Fan"
-    given-names: "Xing"
-repository-code: "https://github.com/xfan-01/pv-interneuron-candidate-profiling"
-type: software
