@@ -1,24 +1,8 @@
 cff-version: 1.2.0
-message: "If you use this code in your research, please cite the thesis."
-title: "Transformer-based modelling of human glia-to-PV interneuron reprogramming"
-type: software
+message: "If you use this code, please cite this repository."
+title: "PV Interneuron Candidate Profiling"
 authors:
-  - given-names: Xing
-    name: "Xing"
-repository-code: "https://github.com/sc_transformer/pv_reprogramming"
-abstract: >
-  Reusable research code for Transformer-based modelling of human glia-to-PV
-  interneurone reprogramming.  The framework combines fate classification,
-  latent-time trajectory forecasting, model attribution, and in silico
-  perturbation to prioritise candidate regulators of PV-associated fate
-  acquisition.
-keywords:
-  - single-cell
-  - transformer
-  - reprogramming
-  - glia-to-neuron
-  - perturbation
-  - gene-regulatory-network
-license: MIT
-version: 0.1.0
-date-released: "2026-05-19"
+  - family-names: "Fan"
+    given-names: "Xing"
+repository-code: "https://github.com/xfan-01/pv-interneuron-candidate-profiling"
+type: software
