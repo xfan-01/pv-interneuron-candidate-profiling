@@ -1,6 +1,6 @@
 # PV Interneuron Candidate Profiling
 
-Reusable research code for the Transformer-based framework developed in the thesis
+Reusable research code for the Transformer-based framework developed in my master's thesis
 *Transformer-Based Regulatory Candidate Profiling for Parvalbumin-Associated
 Interneuron Reprogramming*.
 
